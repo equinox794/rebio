@@ -29,9 +29,14 @@ export default async function handler(req, res) {
       return res.status(200).json({ message: 'Event ignored', event });
     }
 
-    // Telegram mesajı hazırla
-    const telegramBotToken = '8279248718:AAESD7d5zfrudVI0ZIxzLYNer1p5KT2yFa0';
-    const chatId = '7907955424';
+    // Telegram mesajı hazırla (Environment Variables'dan al)
+    const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.TELEGRAM_CHAT_ID;
+    
+    if (!telegramBotToken || !chatId) {
+      return res.status(500).json({ error: 'Missing Telegram credentials' });
+    }
+    
     const telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
 
     const durationSeconds = Math.round((call?.duration_ms || 0) / 1000);
