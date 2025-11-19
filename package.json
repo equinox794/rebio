@@ -1,0 +1,15 @@
+{
+  "name": "retell-telegram-webhook",
+  "version": "1.0.0",
+  "description": "Retell to Telegram notification webhook",
+  "main": "api/retell-webhook.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  }
+}
+
