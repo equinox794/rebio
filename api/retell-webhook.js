@@ -45,7 +45,10 @@ export default async function handler(req, res) {
     const userSentiment = call?.call_analysis?.user_sentiment || 'Bilinmiyor';
     const customerName = call?.call_analysis?.Customer_Name || 'Bilinmiyor';
     const city = call?.call_analysis?.City || 'Bilinmiyor';
-    const phoneNumber = call?.call_analysis?.Phone_Number || 'Bilinmiyor';
+    
+    // Telefon numarası: Önce from_number (gerçek arama), yoksa AI'dan çıkarılan
+    const phoneNumber = call?.from_number || call?.call_analysis?.Phone_Number || 'Bilinmiyor';
+    
     const callerIntent = call?.call_analysis?.Caller_Intent || 'Bilinmiyor';
 
     const text = `🤖 AI Analizli Yeni Arama!
