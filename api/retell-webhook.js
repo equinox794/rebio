@@ -29,6 +29,8 @@ export default async function handler(req, res) {
       return res.status(200).json({ message: 'Event ignored', event });
     }
 
+    console.log('Full call object:', JSON.stringify(call, null, 2));
+
     // Telegram mesajı hazırla (Environment Variables'dan al)
     const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
